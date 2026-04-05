@@ -16,10 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.urls import path
+from main.views import UserDetailView
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/users/", include("main.urls")),
     path("api-auth/", include("rest_framework.urls")),
+    path('users/<int:pk>/', UserDetailView.as_view()),
 
 ]
